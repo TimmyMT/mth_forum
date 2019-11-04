@@ -1,0 +1,12 @@
+= link_to "Add new category", new_category_path
+
+h1 Categories
+- @categories.each do |category|
+  = category.name
+  br
+  = link_to "Edit", edit_category_path(category)
+  '
+  span |
+  '
+  = link_to "Destroy", category_path(category), method: :delete
+  br
