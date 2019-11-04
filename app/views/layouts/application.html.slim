@@ -11,7 +11,11 @@ html
   body
     .navbar_mth
       .container
-        = link_to "Main", root_path
+        .navigate_links
+          = link_to "Main", root_path
+        '
+        = render "shared/nav_user"
     br
     .container
+      = render "shared/flash"
       = yield
