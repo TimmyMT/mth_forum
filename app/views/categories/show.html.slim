@@ -1,6 +1,10 @@
+h3
+  = link_to "Back to categories list", categories_path, class: "btn btn-outline-danger btn-sm"
+  '
+  = link_to "New post", new_category_post_path(@category), class: 'btn btn-outline-danger btn-sm'
+
 h1= "Posts of Category #{@category.name}"
-h3= link_to "New post", new_category_post_path(@category)
-br
+
 - @posts.each do |post|
-  = link_to post.title, post_path(post)
-  br
+  .post_mth
+    = link_to post.title, post_path(post)

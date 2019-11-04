@@ -1,3 +1,10 @@
-// Place all the styles related to the Posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.post_mth a {
+  font: bold 25px Verdana;
+  color: black;
+}
+
+.post_mth a:hover {
+  color: red;
+  text-shadow: 1px 1px 2px black;
+  text-decoration: none;
+}

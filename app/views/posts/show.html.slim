@@ -1,9 +1,10 @@
+= link_to "Back to posts of category", category_path(@post.category), class: "btn btn-outline-danger btn-sm"
+
 h1= @post.title
 
 p= @post.body
 
-= link_to "Edit", edit_post_path(@post)
-'
-span |
-'
-= link_to "Delete", "#"
+.post_mth
+  = link_to "Edit", edit_post_path(@post)
+  '
+  = link_to "Delete", post_path(@post), method: :delete

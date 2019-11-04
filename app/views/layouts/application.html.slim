@@ -9,7 +9,9 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    = link_to "Main", root_path
+    .navbar_mth
+      .container
+        = link_to "Main", root_path
     br
     .container
       = yield
