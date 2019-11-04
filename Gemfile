@@ -5,6 +5,9 @@ ruby '2.5.3'
 
 # Custom gems #
 gem 'slim-rails'
+gem 'bootstrap', '~> 4.3.1'
+gem 'autoprefixer-rails'
+gem 'mini_racer'
 ###############
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
