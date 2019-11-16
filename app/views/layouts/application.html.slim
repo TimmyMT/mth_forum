@@ -5,7 +5,8 @@ html
     = csrf_meta_tags
     = csp_meta_tag
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
@@ -17,5 +18,15 @@ html
         = render "shared/nav_user"
     br
     .container
+
+      // for test dropbdown
+      .dropdown
+        a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" Dropdown link
+        div class="dropdown-menu" aria-labelledby="dropdownMenuLink"
+          a class="dropdown-item" href="#" Action
+          a class="dropdown-item" href="#" Another action
+          a class="dropdown-item" href="#" Something else here
+      br
+
       = render "shared/flash"
       = yield

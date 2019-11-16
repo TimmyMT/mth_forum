@@ -7,4 +7,5 @@ h1= "Posts of Category #{@category.name}"
 
 - @posts.each do |post|
   .post_mth
-    = link_to post.title, post_path(post)
+    .post_card
+      = link_to post.title, post_path(post)

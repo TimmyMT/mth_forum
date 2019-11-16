@@ -9,6 +9,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'autoprefixer-rails'
 gem 'mini_racer'
 gem 'devise'
+gem 'webpacker', '4.2.0'
 ###############
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
