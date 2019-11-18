@@ -15,11 +15,19 @@
  */
 @import "bootstrap";
 //@import "~bootstrap/sass/bootstrap";
+//@import url('https://fonts.googleapis.com/css?family=Caveat&display=swap');
+
+@font-face {
+  font-family: "TriodPostnaja";
+  src: url('/assets/TriodPostnaja');
+}
 
 .navbar_mth {
+  position: fixed;
+  width: 100%;
   background-color: #ff0100;
   height: 40px;
-  font: bold 27px Verdana;
+  font: 27px TriodPostnaja;
   padding: 5px;
   box-shadow: 2px 2px 10px #2E2F30;
 }
@@ -35,7 +43,8 @@
 }
 
 body {
-  font: bold 14pt Verdana;
+  font-family: "TriodPostnaja";
+  font-size: 18px;
 }
 
 .navigate_links {
@@ -45,4 +54,19 @@ body {
 
 .user_panel {
   text-align: right;
+}
+
+.content {
+  padding-top: 35px;
+}
+
+.mth_footer {
+  padding-top: 5px;
+  bottom: 0px;
+  position: fixed;
+  width: 100%;
+  background-color: #000000;
+  height: 40px;
+  font: 16pt TriodPostnaja;
+  color: white;
 }

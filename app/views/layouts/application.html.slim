@@ -18,15 +18,10 @@ html
         = render "shared/nav_user"
     br
     .container
-
-      // for test dropbdown
-      .dropdown
-        a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" Dropdown link
-        div class="dropdown-menu" aria-labelledby="dropdownMenuLink"
-          a class="dropdown-item" href="#" Action
-          a class="dropdown-item" href="#" Another action
-          a class="dropdown-item" href="#" Something else here
-      br
-
       = render "shared/flash"
-      = yield
+      .content
+        = yield
+    br
+    .mth_footer
+      .container
+        h5 Footer
