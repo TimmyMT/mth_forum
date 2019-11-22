@@ -1,12 +1,13 @@
-= form_with model: [@category, @post], local: true do |f|
-  = render "shared/errors", resource: @post
-  br
-  = f.text_field :title, class: "form-control"
-  = f.label :title
-  br
-  = f.text_area :body, class: "form-control"
-  = f.label :body
-  br
-  = f.select :something, options_for_select(str_coll), {}, class: "form-control"
-  br
-  = f.submit class: "btn btn-danger btn-sm"
+div style="width: 50%"
+  = form_with model: [@category, @post], local: true do |f|
+    = render "shared/errors", resource: @post
+    br
+    = f.text_field :title, class: "form-control"
+    = f.label :title
+    br
+    = f.text_area :body, class: "form-control"
+    = f.label :body
+    br
+    = f.select :something, options_for_select(str_coll), {}, class: "form-control"
+    br
+    = f.submit class: "btn btn-danger btn-sm"

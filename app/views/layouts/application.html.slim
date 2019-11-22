@@ -17,11 +17,12 @@ html
         '
         = render "shared/nav_user"
     br
-    .container
-      = render "shared/flash"
-      .content
-        = yield
-    br
+    .background_content
+      .container
+        = render "shared/flash"
+        .content
+          = yield
+      br
     .mth_footer
       .container
         h5 Footer
