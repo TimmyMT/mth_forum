@@ -7,4 +7,6 @@
   = f.text_area :body, class: "form-control"
   = f.label :body
   br
+  = f.select :something, options_for_select(str_coll), {}, class: "form-control"
+  br
   = f.submit class: "btn btn-danger btn-sm"
