@@ -10,6 +10,7 @@ gem 'autoprefixer-rails'
 gem 'mini_racer'
 gem 'devise'
 gem 'webpacker', '4.2.0'
+gem 'cancancan'
 ###############
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -6,5 +6,5 @@ class User < ApplicationRecord
          :validatable,
          :confirmable
 
-
+  has_many :posts, dependent: :nullify
 end
