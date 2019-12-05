@@ -39,7 +39,7 @@ RSpec.configure do |config|
 
   # Custom settings #
   config.include FactoryBot::Syntax::Methods
-  # config.include FeatureHelpers, type: :feature
+  config.include FeatureHelpers, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
