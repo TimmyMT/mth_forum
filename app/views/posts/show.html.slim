@@ -13,7 +13,7 @@ p= @post.body
 - if can?(:create, Comment)
   div class="new_comment bl_wdth-70"
     = form_with model: [@post, @comment] do |f|
-      = f.label 'Body'
+      = f.label :body, 'Add your comment'
       br
       = f.text_area :body, required: true, class: "form-control"
       = f.submit class: "btn btn-outline-danger btn-sm", style: "margin-top: 5px"

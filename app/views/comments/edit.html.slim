@@ -2,7 +2,7 @@
 br
 br
 = form_with model: @comment, local: true do |f|
-  = f.label 'Body'
+  = f.label :body, "Change your comment"
   br
   = f.text_area :body, requred: true, class: "form-control bl_wdth-70"
   = f.submit class: "btn btn-danger", style: "margin-top: 5px"
