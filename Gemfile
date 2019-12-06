@@ -11,6 +11,7 @@ gem 'mini_racer'
 gem 'devise'
 gem 'webpacker', '4.2.0'
 gem 'cancancan'
+gem 'jquery-rails'
 ###############
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

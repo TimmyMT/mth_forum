@@ -7,4 +7,5 @@ class User < ApplicationRecord
          :confirmable
 
   has_many :posts, dependent: :nullify
+  has_many :comments, dependent: :nullify
 end

@@ -7,6 +7,8 @@ class PostsController < ApplicationController
   before_action :set_category, only: [:new, :create]
 
   def show
+    @comments = @post.comments.order(created_at: :desc)
+    @comment = @post.comments.new
   end
 
   def new

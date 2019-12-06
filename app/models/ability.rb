@@ -20,9 +20,10 @@ class Ability
 
   def user_abilities
     guest_abilities
-    can :create, [Post]
-    can :update, [Post], user: user
-    can :destroy, [Post], user: user
+
+    can :create, [Post, Comment]
+    can :update, [Post, Comment], user: user
+    can :destroy, [Post, Comment], user: user
   end
 
   def admin_abilities
