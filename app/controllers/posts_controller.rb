@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
-  authorize_resource
-
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_category, only: [:new, :create]
+
+  authorize_resource
 
   def show
     @comments = @post.comments.order(created_at: :desc)

@@ -22,6 +22,7 @@ class Ability
     guest_abilities
 
     can :create, [Post, Comment]
+    can :edit, [Post, Comment], user: user
     can :update, [Post, Comment], user: user
     can :destroy, [Post, Comment], user: user
   end
