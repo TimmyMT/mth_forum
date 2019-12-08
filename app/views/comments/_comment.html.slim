@@ -1,12 +1,13 @@
 - if comment.body.present?
-  div class="comment_#{comment.id} bl_wdth-70"
-    div class="card border-danger mb-3 block_shadow"
-      div class="card-body text-danger"
-        p class="card-text"
-          = comment.body
-      - if can?(:update, comment)
-        div class="card-footer bg-danger comment_mth"
-          = link_to "Change your comment", edit_comment_path(comment)
-          '
-          = link_to "Delete comment", comment_path(comment), method: :delete, remote: true
-  / br
+  .bl_wdth-70
+    div class="comment_#{comment.id}"
+      div class="card border-danger mb-3 block_shadow"
+        div class="card-body text-danger"
+          p class="card-text"
+            = comment.body
+        - if can?(:update, comment)
+          div class="card-footer bg-danger comment_mth"
+            = link_to "Change your comment", edit_comment_path(comment)
+            '
+            = link_to "Delete comment", comment_path(comment), method: :delete, remote: true
+    / br

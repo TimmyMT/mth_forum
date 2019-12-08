@@ -3,6 +3,7 @@ require 'spec_helper'
 require 'selenium-webdriver'
 require 'cancan/matchers'
 
+
 ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)
@@ -47,6 +48,11 @@ RSpec.configure do |config|
   end
 
   Capybara.javascript_driver = :selenium_chrome_headless
+  config.include WaitForAjax, type: :feature
+
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
   ###################
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
