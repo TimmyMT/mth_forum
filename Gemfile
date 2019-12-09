@@ -12,6 +12,9 @@ gem 'devise'
 gem 'webpacker', '4.2.0'
 gem 'cancancan'
 gem 'jquery-rails'
+gem 'cocoon'
+gem 'file_validators'
+gem 'mini_magick'
 ###############
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

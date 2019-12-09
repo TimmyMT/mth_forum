@@ -1,0 +1,7 @@
+.nested-fields
+  = f.label :image, "Upload image"
+  br
+  = f.file_field :image
+  br
+  = link_to_remove_association "Clear file", f, class: "btn btn-outline-danger btn-sm"
+  br

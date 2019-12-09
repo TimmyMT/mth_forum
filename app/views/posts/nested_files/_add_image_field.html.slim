@@ -1,0 +1,6 @@
+= f.fields_for :post_images do |image|
+  = render "posts/nested_files/nested_image_field", f: image
+  '
+  = link_to_add_association 'Add file', f, :post_images,
+          partial: "posts/nested_files/nested_image_field",
+          class: 'btn btn-outline-dark btn-sm'

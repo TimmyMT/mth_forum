@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def new
     @post = @category.posts.new
+    @post.post_images.new
   end
 
   def create
@@ -46,7 +47,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, post_images_attributes: [:image])
   end
 
   def set_category
