@@ -134,5 +134,94 @@ RSpec.describe CategoriesController, type: :controller do
     end
   end
 
-  describe "PATCH #update"
+  describe "PATCH #update" do
+    let!(:category) { create(:category) }
+
+    before { get :edit, params: { id: category } }
+
+    context 'guest' do
+      it 'tries to change category' do
+        patch :update, params: { id: category, category: { name: 'newName' } }
+        category.reload
+
+        expect(category.name).to_not eq 'newName'
+      end
+    end
+
+    context 'author' do
+      before { sign_in(user) }
+      it 'tries to change category' do
+        patch :update, params: { id: category, category: { name: 'newName' } }
+        category.reload
+
+        expect(category.name).to_not eq 'newName'
+      end
+    end
+
+    context 'admin' do
+      before { sign_in(admin) }
+
+      it 'tries to change category' do
+        patch :update, params: { id: category, category: { name: 'newName' } }
+        category.reload
+
+        expect(category.name).to eq 'newName'
+      end
+
+      it 'redirects to updated attributes' do
+        patch :update, params: { id: category, category: attributes_for(:category) }
+        expect(response).to redirect_to categories_path
+      end
+
+      context 'not valid attr' do
+        before { patch :update, params: { id: category, category: attributes_for(:category, :invalid_category) } }
+
+        it 'does not change category' do
+          category.reload
+          expect(category.name).to eq 'MyCategory'
+        end
+
+        it 're render edit view' do
+          expect(response).to render_template(:edit)
+        end
+      end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    let!(:category) { create(:category) }
+
+    context 'guest' do
+      it 'deletes category' do
+        expect do
+          delete :destroy, params: { id: category }
+        end.to_not change(Category, :count)
+      end
+    end
+
+    context 'just user' do
+      before { sign_in(user) }
+
+      it 'deletes category' do
+        expect do
+          delete :destroy, params: { id: category }
+        end.to_not change(Category, :count)
+      end
+    end
+
+    context 'admin' do
+      before { sign_in(admin) }
+
+      it 'deletes category' do
+        expect do
+          delete :destroy, params: { id: category }
+        end.to change(Category, :count).by(-1)
+      end
+
+      it 'redirects to index' do
+        delete :destroy, params: { id: category }
+        expect(response).to redirect_to categories_path
+      end
+    end
+  end
 end
