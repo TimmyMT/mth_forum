@@ -4,11 +4,11 @@ h1= @post.title
 
 p= @post.body
 
-p Images:
-- if @post.post_images.present?
+- if @post.post_images.present? && @post.post_images.last.image.attached?
+  p Images:
   - @post.post_images.each do |post_image|
     = image_tag(post_image.image, style: 'height: 300px; width: auto;')
-br
+  br
 
 .post_mth
   - if can?(:destroy, @post)

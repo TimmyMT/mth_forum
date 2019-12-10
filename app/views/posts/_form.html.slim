@@ -11,6 +11,9 @@ div class="bl_wdth-50"
     p Images:
     .add-images
       = render "posts/nested_files/add_image_field", f: f
+      = link_to_add_association 'Add file', f, :post_images,
+              partial: "posts/nested_files/nested_image_field",
+              class: 'btn btn-outline-dark btn-sm'
     br
     / = f.select :something, options_for_select(str_coll), {}, class: "form-control"
     / br
