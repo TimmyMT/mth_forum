@@ -5,4 +5,11 @@ br
   = f.label :body, "Change your comment"
   br
   = f.text_area :body, requred: true, class: "form-control bl_wdth-70"
+  p Images:
+  .add-images
+    = render "posts/nested_files/add_image_field", f: f
+    = link_to_add_association 'Add file', f, :post_images,
+            partial: "posts/nested_files/nested_image_field",
+            class: 'btn btn-outline-dark btn-sm'
+  br
   = f.submit class: "btn btn-danger", style: "margin-top: 5px"

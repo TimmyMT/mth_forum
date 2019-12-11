@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   def show
     @comments = @post.comments.order(created_at: :desc)
     @comment = @post.comments.new
+    @comment.post_images.new
   end
 
   def new
