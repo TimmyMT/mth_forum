@@ -3,7 +3,7 @@ class PostImagesController < ApplicationController
 
   def destroy
     set_post_image
-    @post_image.destroy if current_user == @post_image.post.user || current_user.admin?
+    @post_image.destroy if current_user == @post_image.post_imageble.user || current_user.admin?
   end
 
   private
