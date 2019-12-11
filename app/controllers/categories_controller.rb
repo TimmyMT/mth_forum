@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @posts = @category.posts
+    @posts = @category.posts.order(created_at: :desc)
   end
 
   def new

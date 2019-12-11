@@ -10,7 +10,8 @@ p= @post.body
     div class="post_image_#{post_image.id}"
       = image_tag(post_image.image, style: 'height: 300px; width: auto;')
       br
-      = link_to 'delete image', post_image_path(post_image), method: :delete, remote: true, class: "btn btn-outline-danger btn-sm"
+      - if can_destroy?(post_image)
+        = link_to 'delete image', post_image_path(post_image), method: :delete, remote: true, class: "btn btn-outline-danger btn-sm"
   br
 
 .post_mth
