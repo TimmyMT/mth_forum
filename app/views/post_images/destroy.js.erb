@@ -1,0 +1,3 @@
+<% if @post_image.destroyed? %>
+  $(".post_image_<%= @post_image.id %>").remove()
+<% end %>

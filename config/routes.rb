@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :categories, shallow: true do
     resources :posts, shallow: true do
+      resources :post_images, only: :destroy
       resources :comments, shallow: true
     end
   end
