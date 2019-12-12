@@ -10,8 +10,8 @@ p= @post.body
     div class="post_image_#{post_image.id}"
       = image_tag(post_image.image, style: 'height: 300px; width: auto;')
       br
-      - if can_destroy?(post_image)
-        = link_to 'delete image', post_image_path(post_image), method: :delete, remote: true, class: "btn btn-outline-danger btn-sm"
+      / - if can_destroy?(post_image)
+      /   = link_to 'delete image', post_image_path(post_image), method: :delete, remote: true, class: "btn btn-outline-danger btn-sm"
   br
 
 .post_mth
@@ -20,20 +20,24 @@ p= @post.body
     '
     = link_to "Delete", post_path(@post), method: :delete
 
-- if can?(:create, Comment)
-  div class="new_comment bl_wdth-70"
-    = form_with model: [@post, @comment] do |f|
-      = f.label :body, 'Add your comment'
-      br
-      = f.text_area :body, required: true, class: "form-control"
-      p Images:
-      .add-images
-        = render "posts/nested_files/add_image_field", f: f
-        = link_to_add_association 'Add file', f, :post_images,
-                partial: "posts/nested_files/nested_image_field",
-                class: 'btn btn-outline-dark btn-sm'
-      br
-      = f.submit class: "btn btn-outline-danger btn-sm", style: "margin-top: 5px"
-  br
+.add_comment
+  div class="card border-dark bl_wdth-70"
+    div class="card-body bg-danger"
+      - if can?(:create, Comment)
+        div class="new_comment bl_wdth-70"
+          = form_with model: [@post, @comment] do |f|
+            = f.label :body, 'Add your comment'
+            br
+            = f.text_area :body, required: true, class: "form-control"
+            p Images:
+            .add-images
+              / = render "posts/nested_files/add_image_field", f: f
+              = link_to_add_association 'Add file', f, :post_images,
+                      partial: "posts/nested_files/nested_image_field",
+                      class: 'btn btn-outline-dark btn-sm'
+            br
+            = f.submit class: "btn btn-outline-dark btn-sm", style: "margin-top: 5px"
+        br
+br
 .comment_zone
   = render @comments
