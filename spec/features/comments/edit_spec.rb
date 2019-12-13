@@ -7,6 +7,7 @@ feature 'Comment Edit action' do
   given!(:category) { create(:category) }
   given!(:post) { create(:post, category: category, user: user) }
   given!(:comment) { create(:comment, post: post, user: user) }
+  given!(:post_image) { create(:post_image, post_imageble: comment) }
 
   scenario 'guest tries to edit comment' do
     visit post_path(post)
@@ -14,6 +15,11 @@ feature 'Comment Edit action' do
     within ".comment_#{comment.id}" do
       expect(page).to have_content comment.body
       expect(page).to_not have_link "Change your comment"
+    end
+
+    within ".post_image_#{post_image.id}" do
+      expect(page).to have_css("img[src*='cat.jpg']")
+      expect(page).to_not have_link 'delete image'
     end
 
     visit edit_comment_path(comment)
@@ -29,6 +35,11 @@ feature 'Comment Edit action' do
       expect(page).to_not have_link "Change your comment"
     end
 
+    within ".post_image_#{post_image.id}" do
+      expect(page).to have_css("img[src*='cat.jpg']")
+      expect(page).to_not have_link 'delete image'
+    end
+
     visit edit_comment_path(comment)
     expect(page).to have_content "You are not authorized to access this page."
   end
@@ -41,6 +52,11 @@ feature 'Comment Edit action' do
       expect(page).to have_content comment.body
       expect(page).to have_link "Change your comment"
       click_on "Change your comment"
+    end
+
+    within ".post_image_#{post_image.id}" do
+      expect(page).to have_css("img[src*='cat.jpg']")
+      expect(page).to have_link 'delete image'
     end
 
     expect(page).to have_button "Update Comment"
@@ -60,6 +76,11 @@ feature 'Comment Edit action' do
       expect(page).to have_content comment.body
       expect(page).to have_link "Change your comment"
       click_on "Change your comment"
+    end
+
+    within ".post_image_#{post_image.id}" do
+      expect(page).to have_css("img[src*='cat.jpg']")
+      expect(page).to have_link 'delete image'
     end
 
     expect(page).to have_button "Update Comment"

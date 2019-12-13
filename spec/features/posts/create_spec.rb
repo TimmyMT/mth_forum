@@ -5,7 +5,7 @@ feature 'Post Create action' do
   given(:admin) { create(:user, admin: true) }
   given!(:category) { create(:category) }
 
-  scenario 'admin tries to create post' do
+  scenario 'admin tries to create post', js: true do
     sign_in(admin)
 
     visit root_path
@@ -19,13 +19,18 @@ feature 'Post Create action' do
     expect(page).to have_content "Create a new post"
     fill_in "Title", with: 'TestPostTitle'
     fill_in "Body", with: 'TestPostBody'
+    click_on 'Add file'
+    page.attach_file('Image', "#{Rails.root}/spec/files/cat.jpg")
     click_on 'Create Post'
 
     expect(page).to have_content Post.last.title
     expect(page).to have_content Post.last.body
+    within ".post_image_#{PostImage.last.id}" do
+      expect(page).to have_css("img[src*='cat.jpg']")
+    end
   end
 
-  scenario 'user tries to create post' do
+  scenario 'user tries to create post', js: true do
     sign_in(user)
 
     visit root_path
@@ -39,10 +44,13 @@ feature 'Post Create action' do
     expect(page).to have_content "Create a new post"
     fill_in "Title", with: 'TestPostTitle'
     fill_in "Body", with: 'TestPostBody'
+    click_on 'Add file'
+    page.attach_file('Image', "#{Rails.root}/spec/files/cat.jpg")
     click_on 'Create Post'
 
     expect(page).to have_content Post.last.title
     expect(page).to have_content Post.last.body
+    expect(page).to have_css("img[src*='cat.jpg']")
   end
 
   scenario 'guest tries to create post' do

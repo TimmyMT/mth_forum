@@ -24,7 +24,13 @@ feature 'Comment Create action' do
     expect(page).to have_button "Create Comment"
 
     fill_in "Add your comment", with: "FirstComment"
+    within ".add_comment" do
+      click_on 'Add file'
+      page.attach_file('Image', "#{Rails.root}/spec/files/cat.jpg")
+    end
     click_on "Create Comment"
+
+    expect(page).to have_css("img[src*='cat.jpg']")
     expect(page).to have_content "FirstComment"
   end
 

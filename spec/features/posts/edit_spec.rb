@@ -6,17 +6,32 @@ feature 'Post Edit action' do
   given(:admin) { create(:user, admin: true) }
   given!(:category) { create(:category) }
   given!(:post) { create(:post, category: category, user: user) }
+  given!(:post_image) { create(:post_image, post_imageble: post) }
 
-  scenario 'admin tries to edit post' do
+  scenario 'admin tries to edit post', js: true do
     sign_in(admin)
     visit post_path(post)
 
     expect(page).to have_content post.title
     expect(page).to have_content post.body
+
+    within ".post_image_#{post_image.id}" do
+      expect(page).to have_css("img[src*='cat.jpg']")
+      expect(page).to_not have_link 'delete image'
+    end
+
     expect(page).to have_link "Edit"
 
     click_on "Edit"
     expect(page).to have_content "Edit post #{post.title}"
+
+    within ".post_image_#{post_image.id}" do
+      expect(page).to have_css("img[src*='cat.jpg']")
+      expect(page).to have_link 'delete image'
+      click_on 'delete image'
+    end
+    expect(page).to_not have_css ".post_image_#{post_image.id}"
+
     fill_in "Title", with: "EditedTitle"
     fill_in "Body", with: "EditedBody"
     click_on "Update Post"
@@ -25,16 +40,30 @@ feature 'Post Edit action' do
     expect(page).to have_content "EditedBody"
   end
 
-  scenario 'user tries to edit post' do
+  scenario 'user tries to edit post', js: true do
     sign_in(user)
     visit post_path(post)
 
     expect(page).to have_content post.title
     expect(page).to have_content post.body
+
+    within ".post_image_#{post_image.id}" do
+      expect(page).to have_css("img[src*='cat.jpg']")
+      expect(page).to_not have_link 'delete image'
+    end
+
     expect(page).to have_link "Edit"
 
     click_on "Edit"
     expect(page).to have_content "Edit post #{post.title}"
+
+    within ".post_image_#{post_image.id}" do
+      expect(page).to have_css("img[src*='cat.jpg']")
+      expect(page).to have_link 'delete image'
+      click_on 'delete image'
+    end
+    expect(page).to_not have_css ".post_image_#{post_image.id}"
+
     fill_in "Title", with: "EditedTitle"
     fill_in "Body", with: "EditedBody"
     click_on "Update Post"
@@ -49,6 +78,12 @@ feature 'Post Edit action' do
 
     expect(page).to have_content post.title
     expect(page).to have_content post.body
+
+    within ".post_image_#{post_image.id}" do
+      expect(page).to have_css("img[src*='cat.jpg']")
+      expect(page).to_not have_link 'delete image'
+    end
+
     expect(page).to_not have_link "Edit"
 
     visit edit_post_path(post)
@@ -60,6 +95,12 @@ feature 'Post Edit action' do
     visit post_path(post)
     expect(page).to have_content post.title
     expect(page).to have_content post.body
+
+    within ".post_image_#{post_image.id}" do
+      expect(page).to have_css("img[src*='cat.jpg']")
+      expect(page).to_not have_link 'delete image'
+    end
+
     expect(page).to_not have_link "Edit"
 
     visit edit_post_path(post)

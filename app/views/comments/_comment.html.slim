@@ -8,11 +8,12 @@
             - if comment.post_images.present? && comment.post_images.last.image.attached?
               p Images:
               - comment.post_images.each do |post_image|
-                div class="post_image_#{post_image.id}" style="float: left; padding: 5px"
-                  = image_tag(post_image.image, style: 'height: 300px; width: auto;')
-                  br
-                  / - if can_destroy?(post_image)
-                  /   = link_to 'delete image', post_image_path(post_image), method: :delete, remote: true, class: "btn btn-outline-danger btn-sm"
+                - if post_image.image.attached?
+                  div class="post_image_#{post_image.id}" style="float: left; padding: 5px"
+                    = image_tag(post_image.image, style: 'height: 300px; width: auto;')
+                    br
+                    / - if can_destroy?(post_image)
+                    /   = link_to 'delete image', post_image_path(post_image), method: :delete, remote: true, class: "btn btn-outline-danger btn-sm"
               br
         - if can?(:update, comment)
           div class="card-footer bg-danger comment_mth"

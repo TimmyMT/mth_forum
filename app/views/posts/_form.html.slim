@@ -10,7 +10,7 @@ div class="bl_wdth-50"
     br
     p Images:
     .add-images
-      = render "posts/nested_files/add_image_field", f: f
+      / = render "posts/nested_files/add_image_field", f: f
       = link_to_add_association 'Add file', f, :post_images,
               partial: "posts/nested_files/nested_image_field",
               class: 'btn btn-outline-dark btn-sm'
