@@ -14,6 +14,8 @@
 // *= require_self
 // */
 
+
+
 $theme-colors: (
         "danger": red,
         "dark": black
@@ -29,7 +31,8 @@ $theme-colors: (
 }
 
 .navbar_mth {
-  //position: fixed;
+  z-index: 1;
+  position: fixed;
   width: 100%;
   background-color: #ff0100;
   height: 40px;
