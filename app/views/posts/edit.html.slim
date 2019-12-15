@@ -1,3 +1,8 @@
+= link_to 'Cancel', category_path(@post.category), class: 'btn btn-outline-danger'
+
+br
+br
+
 h1= "Edit post #{@post.title}"
 
 - if @post.post_images.present? && @post.post_images.last.image.attached?

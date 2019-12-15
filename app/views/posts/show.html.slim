@@ -2,7 +2,10 @@
 
 h1= @post.title
 
-p= @post.body
+- if @post.user.avatar.attached?
+  = image_tag(@post.user.avatar, class: "rounded-circle", style: "height: 30px; width: 30px")
+'
+= @post.body
 
 - if @post.post_images.present? && @post.post_images.last.image.attached?
   p Images:

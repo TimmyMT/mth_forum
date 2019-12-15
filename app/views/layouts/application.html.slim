@@ -12,10 +12,13 @@ html
   body
     .navbar_mth
       .container
-        .navigate_links
-          = link_to "Main", root_path
-        '
-        = render "shared/nav_user"
+        .row
+          .col-5
+            .navigate_links
+              = link_to "Main", root_path
+            '
+          .col-7
+            = render "shared/nav_user"
     br
     .background_content
       br
