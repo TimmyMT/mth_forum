@@ -1,4 +1,4 @@
-# MTH Froum
+# MTH Forum
 
 This is my project to demonstrate the skill level of application programming with Ruby on Rails
 
