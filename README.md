@@ -7,4 +7,3 @@ This is my project to demonstrate the skill level of application programming wit
 * RSpec
 * Capybara
 * AJAX with jQuery
-* ActionCable
